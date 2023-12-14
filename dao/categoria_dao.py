@@ -6,7 +6,6 @@ from bson import ObjectId
 class CategoriaDAO:
 
     def __init__(self):
-        self.__categorias: list[Categoria] = list()
         self.__client: ClientFactory = ClientFactory()
 
     def listar(self) -> list[Categoria]:

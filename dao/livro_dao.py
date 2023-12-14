@@ -1,9 +1,13 @@
 from model.livro import Livro
+from database.client_factory import ClientFactory
+from bson import ObjectId
+
 
 class LivroDAO:
 
     def __init__(self):
         self.__livros: list[Livro] = list()
+        self.__client: ClientFactory = ClientFactory()
 
     def listar(self) -> list[Livro]:
         return self.__livros
@@ -28,12 +32,11 @@ class LivroDAO:
                 liv = l
                 break
         return liv
-    
+
     def ultimo_id(self) -> int:
-        index = len(self.__livros) -1
+        index = len(self.__livros) - 1
         if (index == -1):
             id = 0
         else:
             id = self.__livros[index].id
         return id
-    
