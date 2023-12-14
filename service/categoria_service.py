@@ -1,5 +1,6 @@
 from dao.categoria_dao import CategoriaDAO
 from model.categoria import Categoria
+from bson import ObjectId
 
 
 class CategoriaService:
@@ -69,7 +70,7 @@ class CategoriaService:
         print('\nRemovendo categoria...')
 
         try:
-            categoria_id = int(
+            categoria_id = ObjectId(
                 input('Digite o ID da categoria para excluir: '))
             if (self.__categoria_dao.remover(categoria_id)):
                 print('Categoria excluída com sucesso!')
@@ -85,7 +86,7 @@ class CategoriaService:
         print('\nCategoria por Id...')
 
         try:
-            id = int(input('Digite o Id da categoria para buscar: '))
+            id = ObjectId(input('Digite o Id da categoria para buscar: '))
             cat = self.__categoria_dao.buscar_por_id(id)
 
             if (cat == None):
